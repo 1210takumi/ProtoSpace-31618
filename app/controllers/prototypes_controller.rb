@@ -15,8 +15,12 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    Prototype.create(prototype_params)
+    prototype = Prototype.new(prototype_params)
+    if prototype.save
     redirect_to action: :index
+    else
+    redirect_to action: :new
+    end
   end
 
   def destroy
