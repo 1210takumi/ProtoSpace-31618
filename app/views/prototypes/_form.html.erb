@@ -1,0 +1,66 @@
+<%= form_with(model: @prototype, local: true) do |form| %>
+  <%# <%= form.text_field :image, placeholder: "Image Url" %>
+<%# text_field を変更する　（chatapp _main_chat） %>
+<%# <form enctype="multipart/form-data" action="/prototypes" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="F+etNwGM0euUWIU8r2jPN+HO3sdLyNZBINWmLY0Jp2WCyN1GPMevp/JZ91mbJaDtDgaoxXcqA91+6P7L8P0/IA=="> %>
+  <div class="field">
+    <%= form.label :title, "プロトタイプの名称" %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :catch, "キャッチコピー" %><br>
+    <%= form.text_area :catch, class: :form__text %>  
+  </div>
+
+  <div class="field">
+    <%= form.label :consept, "コンセプト" %><br>
+    <%= form.text_area :consept, class: :form__text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image, "プロトタイプの画像" %><br>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "保存する", class: :form__btn %>
+  </div>
+</form>
+
+<%# <%= form.text_area :text, placeholder: "text", rows: "10" %>
+<%# <%= form.submit "SEND" %> 
+<% end %> 
+
+<%# 見本のアプリを見ながら必要なフォームを作る　ヒントは検証ツール %>
+<%# フォームのキー　＆コントローラーのキー　＆モデルのバリデーションのキー  %>
+
+
+
+
+
+
+
+<%# <div class="field">
+    <label for="prototype_title">プロトタイプの名称</label><br>
+    <input type="text" name="prototype[title]" id="prototype_title">
+  </div>
+
+  <div class="field">
+    <label for="prototype_catch">キャッチコピー</label><br>
+    <textarea class="form__text" name="prototype[catch]" id="prototype_catch"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="prototype_consept">コンセプト</label><br>
+    <textarea class="form__text" name="prototype[consept]" id="prototype_consept"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="prototype_image">プロトタイプの画像</label><br>
+    <input type="file" name="prototype[image]" id="prototype_image">
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="保存する" class="form__btn" data-disable-with="保存する">
+  </div>
+</form> %>

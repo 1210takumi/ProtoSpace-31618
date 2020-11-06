@@ -1,0 +1,26 @@
+<div class="card">
+   <%= link_to image_tag(prototype.image,class: :card__img ), prototype_path(prototype) %>
+  <div class="card__body">
+    <%# <%= link_to "prototype__wrapper", root_path, class: :prototypes%>
+    <%# <p class="card__summary"> %>
+      <%# <%= "prototype__user" %> 
+    <%# </p> %>
+    <%# <%= link_to "by user__wrapper", root_path, class: :users_id %>
+        <div class="prototype-user">
+      <!-- 投稿したユーザー名情報を出力する -->
+      <%= prototype.user.name %>
+    </div>
+    <div class="prototype-date">
+      <!-- 投稿した時刻を出力する -->
+      <%# <%= prototype.created_at %> 
+    </div>
+  </div>
+  <div class="lower-prototype">
+    <div class="prototype-consept">
+      <!-- 投稿したメッセージ内容を記述する -->
+      <%= prototype.consept %>
+      <%# <%= image_tag prototype.image, class: 'prototype-image' if prototype.image.attached? %>
+    </div>
+    <%= link_to "by #{prototype.user.name}", user_path(prototype.user), class: :card__user %>
+  </div>
+</div>

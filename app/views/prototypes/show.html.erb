@@ -1,0 +1,80 @@
+<main class="main">
+  <div class="inner">
+    <div class="prototype__wrapper">
+      <p class="prototype__hedding">
+        <%= @prototype.title %>
+      </p>
+      <%= link_to "by #{@prototype.user.name}", user_path(@prototype.user.id), class: :prototype__user, method: :get %>
+      <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
+        <div class="prototype__manage">
+          <%= link_to "編集する", edit_prototype_path(@prototype.id), class: :prototype__btn %>
+          <%= link_to "削除する", prototype_path(@prototype.id), class: :prototype__btn, method: :delete %>
+        </div>
+      <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
+      <div class="prototype__image">
+        <%= image_tag @prototype.image %>
+      </div>
+      <div class="prototype__body">
+        <div class="prototype__detail">
+          <p class="detail__title">キャッチコピー</p>
+          <p class="detail__message">
+            <%= @prototype.catch %>
+          </p>
+        </div>
+        <div class="prototype__detail">
+          <p class="detail__title">コンセプト</p>
+          <p class="detail__message">
+            <%= @prototype.consept %>
+          </p>
+        </div>
+      </div>
+      <div class="prototype__comments">
+        <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
+          <%= form_with(model: [@prototype, @comment], local: true) do |f|%>
+            <div class="field">
+            <%= f.label :text, "コメント" %><br />
+            <%= f.text_field :text %>
+            </div>
+            <div class="actions">
+            <%= f.submit "送信する", class: :form__btn  %>
+            </div>
+          <% end %> 
+        <%# // ログインしているユーザーには上記を表示する %>
+        <ul class="comments_lists">
+          <%# 投稿に紐づくコメントを一覧する処理を記述する %>
+            <% @comments.each do |comment|%>
+            <li>
+              <%=  comment.text %>
+              <%= link_to comment.user.name, user_path(comment.user.id), class: :comment_user %>
+            </li>
+            <%end %>
+          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
+        </ul>
+          <%# <div class="container">
+            
+            <% if current_user %>
+              <%# <%= form_with(model: [@prototype, @comment], local: true) do |form| %>
+              <%# <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+              <%# <%= form.submit "SEND" %>
+          <%# <% end %>
+          <%# <% else %>
+            <%# <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong> %>
+        <%# <% end %>
+          <%# <div class="comments"> %>
+            <%# <h4>＜コメント一覧＞</h4> %>
+            <%# <% if @comments %>
+              <%# <% @comments.each do |comment| %>
+               <%# <p> %>
+                 <%# <strong><%= link_to comment.user.name, "/users/#{comment.user_id}"：</strong> %>
+                <%# <%= comment.text %>
+              <%# </p> %>
+              <%# <% end %>
+            <%# <% end %>
+    </div>
+    </div>
+  </div>
+        
+      </div>
+    </div>
+  </div>
+</main>
