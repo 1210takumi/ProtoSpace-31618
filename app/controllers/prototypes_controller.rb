@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
   before_action :set_prototypes, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show, :search]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @prototypes = Prototype.all
@@ -30,7 +30,11 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @prototype= Prototype.find(params[:id])
+    # @prototype= Prototype.find(params[:id])
+  #   if  prototype.edit(prototype_params)
+  #     redirect_to action: :index
+  #   else render :edit
+  #  end
   end
 
  
